@@ -1,3 +1,4 @@
+use crate::pages::not_found::NotFoundPage;
 use leptos::prelude::*;
 use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
 use leptos_router::{
@@ -39,7 +40,7 @@ pub fn App() -> impl IntoView {
         // content for this welcome page
         <Router>
             <main>
-                <Routes fallback=|| "Page not found.".into_view()>
+                <Routes fallback=NotFoundPage>
                     <Route path=StaticSegment("") view=HomePage/>
                 </Routes>
             </main>
