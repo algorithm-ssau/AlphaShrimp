@@ -1,6 +1,6 @@
 use crate::pages::not_found::NotFoundPage;
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
+use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title, Link};
 use leptos_router::{
     components::{Route, Router, Routes},
     StaticSegment,
@@ -33,6 +33,9 @@ pub fn App() -> impl IntoView {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         <Stylesheet id="leptos" href="/pkg/alpha-shrimp.css"/>
+
+        // sets favicon
+        <Link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 
         // sets the document title
         <Title text="Welcome to Leptos"/>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./public/alpha_shrimp_logo.jpeg" alt="AlphaShrimp Logo" width="100%">
+</p>
+
 # 🦐 ALPHASHRIMP: Хватит быть планктоном — пора стать Альфой
 
 ### 🌊 Твой GPT-5 ведет себя как робкая креветка? Пора выяснить, у кого панцирь крепче
