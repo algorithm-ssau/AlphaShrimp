@@ -35,7 +35,7 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/alpha-shrimp.css"/>
 
         // sets favicon
-        <Link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+        <Link rel="icon" type_="image/svg+xml" href="/favicon.svg"/>
 
         // sets the document title
         <Title text="Welcome to Leptos"/>
