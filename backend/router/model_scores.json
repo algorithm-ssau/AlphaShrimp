@@ -1,0 +1,125 @@
+{
+    "_meta": {
+        "source_benchmarks": {
+            "code": "SWE-bench Verified (%)",
+            "math": "GPQA Diamond (%)",
+            "general": "MMLU-Pro (%)",
+            "translation": "WMT + экспертная оценка (шкала 0-1)",
+            "creative": "EQ-Bench Creative Writing + экспертная оценка (шкала 0-1)"
+        },
+        "date": "2026-04-30",
+        "note": "code/math/general - сырые проценты бенчмарков / 100. translation/creative - экспертная оценка в той же шкале."
+    },
+    "models": {
+        "deepseek-v4-pro": {
+            "display_name": "Deepseek V4 Pro",
+            "provider": "deepseek",
+            "scores": {
+                "code": 0.806,
+                "math": 0.901,
+                "translation": 0.78,
+                "creative": 0.70,
+                "general": 0.890
+            }
+        },
+        "gigachat-pro": {
+            "display_name": "GigaChat Pro",
+            "provider": "gigachat",
+            "scores": {
+                "code": 0.45,
+                "math": 0.55,
+                "translation": 0.72,
+                "creative": 0.60,
+                "general": 0.65
+            }
+        },
+        "gemini-3.1-pro": {
+            "display_name": "Gemini 3.1 Pro",
+            "provider": "google",
+            "scores": {
+                "code": 0.806,
+                "math": 0.943,
+                "translation": 0.90,
+                "creative": 0.82,
+                "general": 0.926
+            }
+        },
+        "gemini-3.1-flash-lite": {
+            "display_name": "Gemini 3.1 Flash Lite",
+            "provider": "google",
+            "scores": {
+                "code": 0.60,
+                "math": 0.869,
+                "translation": 0.72,
+                "creative": 0.60,
+                "general": 0.830
+            }
+        },
+        "gemini-3-pro": {
+            "display_name": "Gemini 3 Pro",
+            "provider": "google",
+            "scores": {
+                "code": 0.78,
+                "math": 0.920,
+                "translation": 0.88,
+                "creative": 0.80,
+                "general": 0.901
+            }
+        },
+        "gemini-3-flash": {
+            "display_name": "Gemini 3 Flash",
+            "provider": "google",
+            "scores": {
+                "code": 0.780,
+                "math": 0.904,
+                "translation": 0.83,
+                "creative": 0.76,
+                "general": 0.918
+            }
+        },
+        "claude-haiku-4.5": {
+            "display_name": "Claude Haiku 4.5",
+            "provider": "anthropic",
+            "scores": {
+                "code": 0.733,
+                "math": 0.730,
+                "translation": 0.75,
+                "creative": 0.72,
+                "general": 0.830
+            }
+        },
+        "claude-sonnet-4.6": {
+            "display_name": "Claude Sonnet 4.6",
+            "provider": "anthropic",
+            "scores": {
+                "code": 0.796,
+                "math": 0.899,
+                "translation": 0.85,
+                "creative": 0.90,
+                "general": 0.893
+            }
+        },
+        "claude-opus-4.6": {
+            "display_name": "Claude Opus 4.6",
+            "provider": "anthropic",
+            "scores": {
+                "code": 0.808,
+                "math": 0.913,
+                "translation": 0.87,
+                "creative": 0.93,
+                "general": 0.900
+            }
+        },
+        "claude-opus-4.7": {
+            "display_name": "Claude Opus 4.7",
+            "provider": "anthropic",
+            "scores": {
+                "code": 0.876,
+                "math": 0.942,
+                "translation": 0.88,
+                "creative": 0.95,
+                "general": 0.910
+            }
+        }
+    }
+}
