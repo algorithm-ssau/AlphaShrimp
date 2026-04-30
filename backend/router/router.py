@@ -19,11 +19,12 @@ SCORES_PATH = os.path.join(ROUTER_DIR, "model_scores.json")
 
 _embedder = None
 _clf = None
+_label_encoder = None
 _model_scores = None
 
 
 def _load():
-    global _embedder, _clf, _model_scores
+    global _embedder, _clf, _label_encoder, _model_scores
 
     if _clf is not None:
         return
@@ -31,6 +32,7 @@ def _load():
     with open(CLF_PATH, "rb") as f:
         data = pickle.load(f)
     _clf = data["classifier"]
+    _label_encoder = data["label_encoder"]
     _embedder = SentenceTransformer(data["model_name"])
 
     with open(SCORES_PATH, "r", encoding="utf-8") as f:
@@ -49,10 +51,10 @@ def classify(query: str) -> dict:
     _load()
     embedding = _embedder.encode([query])
     probs = _clf.predict_proba(embedding)[0]
-    categories = _clf.classes_
+    category_names = _label_encoder.inverse_transform(_clf.classes_)
 
-    prob_dict = {cat: round(float(p), 4) for cat, p in zip(categories, probs)}
-    top_category = categories[np.argmax(probs)]
+    prob_dict = {cat: round(float(p), 4) for cat, p in zip(category_names, probs)}
+    top_category = category_names[np.argmax(probs)]
 
     return {
         "category": top_category,
