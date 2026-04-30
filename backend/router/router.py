@@ -62,31 +62,46 @@ def classify(query: str) -> dict:
     }
 
 
-def route(query: str) -> dict:
-    """
-    score = sum(P(category_i) * benchmark_score_i)
+ROUTING_MODES = {
+    "quality":  {"quality_w": 1.0, "cost_w": 0.0},
+    "balanced": {"quality_w": 0.6, "cost_w": 0.4},
+    "economy":  {"quality_w": 0.3, "cost_w": 0.7},
+}
 
-    returns:
-        {
-            "best_model": "claude-opus-4.7",
-            "best_score": 0.912,
-            "category": "code",
-            "probabilities": {"code": 0.85, ...},
-            "all_scores": {"claude-opus-4.7": 0.912, ...}
-        }
+
+def _compute_efficiency():
+    """Нормализованная эффективность: дешёвые модели → ближе к 1.0."""
+    costs = {mid: info["cost"] for mid, info in _model_scores.items()}
+    max_cost = max(costs.values())
+    return {mid: round(1 - cost / max_cost, 4) for mid, cost in costs.items()}
+
+
+def route(query: str, mode: str = "quality") -> dict:
+    """
+    mode: "quality" | "balanced" | "economy"
+
+    quality_score = sum(P(category_i) * benchmark_score_i)
+    cost_efficiency = 1 - (cost / max_cost)
+    final_score = quality_w * quality_score + cost_w * cost_efficiency
     """
     _load()
+    weights = ROUTING_MODES.get(mode, ROUTING_MODES["quality"])
     classification = classify(query)
     probs = classification["probabilities"]
+    efficiency = _compute_efficiency()
 
     all_scores = {}
     for model_id, model_info in _model_scores.items():
         benchmarks = model_info["scores"]
-        score = sum(
+        quality = sum(
             probs.get(cat, 0) * benchmarks.get(cat, 0)
             for cat in probs
         )
-        all_scores[model_id] = round(score, 4)
+        final = (
+            weights["quality_w"] * quality
+            + weights["cost_w"] * efficiency[model_id]
+        )
+        all_scores[model_id] = round(final, 4)
 
     best_model = max(all_scores, key=all_scores.get)
 
@@ -94,6 +109,7 @@ def route(query: str) -> dict:
         "best_model": best_model,
         "best_model_name": _model_scores[best_model]["display_name"],
         "best_score": all_scores[best_model],
+        "mode": mode,
         "category": classification["category"],
         "probabilities": probs,
         "all_scores": all_scores,

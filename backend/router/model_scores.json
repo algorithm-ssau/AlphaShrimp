@@ -8,12 +8,14 @@
             "creative": "EQ-Bench Creative Writing + экспертная оценка (шкала 0-1)"
         },
         "date": "2026-04-30",
-        "note": "code/math/general - сырые проценты бенчмарков / 100. translation/creative - экспертная оценка в той же шкале."
+        "note": "code/math/general - сырые проценты бенчмарков / 100. translation/creative - экспертная оценка в той же шкале.",
+        "cost_unit": "USD за 1M output-токенов"
     },
     "models": {
         "deepseek-v4-pro": {
             "display_name": "Deepseek V4 Pro",
             "provider": "deepseek",
+            "cost": 3.48,
             "scores": {
                 "code": 0.806,
                 "math": 0.901,
@@ -25,6 +27,7 @@
         "gigachat-pro": {
             "display_name": "GigaChat Pro",
             "provider": "gigachat",
+            "cost": 2.00,
             "scores": {
                 "code": 0.45,
                 "math": 0.55,
@@ -36,6 +39,7 @@
         "gemini-3.1-pro": {
             "display_name": "Gemini 3.1 Pro",
             "provider": "google",
+            "cost": 12.00,
             "scores": {
                 "code": 0.806,
                 "math": 0.943,
@@ -47,6 +51,7 @@
         "gemini-3.1-flash-lite": {
             "display_name": "Gemini 3.1 Flash Lite",
             "provider": "google",
+            "cost": 1.50,
             "scores": {
                 "code": 0.60,
                 "math": 0.869,
@@ -58,6 +63,7 @@
         "gemini-3-pro": {
             "display_name": "Gemini 3 Pro",
             "provider": "google",
+            "cost": 10.00,
             "scores": {
                 "code": 0.78,
                 "math": 0.920,
@@ -69,6 +75,7 @@
         "gemini-3-flash": {
             "display_name": "Gemini 3 Flash",
             "provider": "google",
+            "cost": 3.00,
             "scores": {
                 "code": 0.780,
                 "math": 0.904,
@@ -80,6 +87,7 @@
         "claude-haiku-4.5": {
             "display_name": "Claude Haiku 4.5",
             "provider": "anthropic",
+            "cost": 5.00,
             "scores": {
                 "code": 0.733,
                 "math": 0.730,
@@ -91,6 +99,7 @@
         "claude-sonnet-4.6": {
             "display_name": "Claude Sonnet 4.6",
             "provider": "anthropic",
+            "cost": 15.00,
             "scores": {
                 "code": 0.796,
                 "math": 0.899,
@@ -102,6 +111,7 @@
         "claude-opus-4.6": {
             "display_name": "Claude Opus 4.6",
             "provider": "anthropic",
+            "cost": 25.00,
             "scores": {
                 "code": 0.808,
                 "math": 0.913,
@@ -113,6 +123,7 @@
         "claude-opus-4.7": {
             "display_name": "Claude Opus 4.7",
             "provider": "anthropic",
+            "cost": 25.00,
             "scores": {
                 "code": 0.876,
                 "math": 0.942,
